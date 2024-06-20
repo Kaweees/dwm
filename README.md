@@ -95,9 +95,12 @@ To get a local copy of the project up and running on your machine, follow these 
 _To see all of the available plugins, please refer to [packer.lua](./lua/config/packer.lua)_
 
 ### Keyboard Shortcuts
-To enter custom commands into nvim, you must first enter a specific keybind, which is called the leader, followed by the command keybind while in a specific editor mode. My prefix key is <kbd>space</kbd>.
+To enter custom commands into dwm, you must first enter a specific keybind, which is called the MODKEY, followed by the command keybind. My Mod1Mask is <kbd>Alt</kbd>.
 
-To refresh neovim and install new plugins, type <kbd>leader</kbd> + <kbd>I</kbd> (capital i, as in Install) while in normal mode.
+To complile and install dwm, enter the following command in the root of the project:
+   ```sh
+   sudo make clean install
+   ```
 
 | Mode | Command Keybind | Command Description |
 | ---- | --------------- | ------------------- |
@@ -106,8 +109,8 @@ To refresh neovim and install new plugins, type <kbd>leader</kbd> + <kbd>I</kbd>
 | a | <kbd>leader</kbd> + <kbd>n</kbd> | switch to next window |
 | a | <kbd>leader</kbd> + <kbd>p</kbd> | switch to previous window |
 | a | <kbd>leader</kbd> + <kbd>:</kbd> | swap window with next window |
-| a  | <kbd>leader</kbd> + <kbd>;</kbd> | swap window with previous window |
-| a   | <kbd>leader</kbd> + <kbd>&</kbd> | kill window and all panes in it |
+| a | <kbd>leader</kbd> + <kbd>;</kbd> | swap window with previous window |
+| a | <kbd>leader</kbd> + <kbd>&</kbd> | kill window and all panes in it |
 
 <!-- Normal | `<leader>` + `p` + `v` | Execute `:PackerSync` | -->
 
