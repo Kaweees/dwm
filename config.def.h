@@ -1,12 +1,24 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx = 1; /* border pixel of windows */
-static const unsigned int snap = 32;    /* snap pixel */
-static const int showbar = 1;           /* 0 means no bar */
-static const int topbar = 1;            /* 0 means bottom bar */
+static unsigned int borderpx = 1;    /* border pixel of windows */
+static const unsigned int snap = 32; /* snap pixel */
+// static unsigned int gappih = 5;      /* horiz inner gap between windows */
+static unsigned int gappiv = 5; /* vert inner gap between windows */
+// static unsigned int gappoh =
+//     0; /* horiz outer gap between windows and screen edge */
+// static unsigned int gappov =
+//     0; /* vert outer gap between windows and screen edge */
+// static int smartgaps = 0; /* 1 means no outer gap when there is only one
+// window */
+static const int swallowfloating =
+    1;                        /* 1 means swallow floating windows by default */
+static const int showbar = 1; /* 0 means no bar */
+static const int topbar = 1;  /* 0 means bottom bar */
+static int user_bh = 1; /* 2 is the default spacing around the bar's font */
 static const char buttonbar[] = " ";
 
+static char font[] = "FiraCode Nerd Font:size=12";
 static char rofifont[] = "FiraCode Nerd Font 10";
 static const char *fonts[] = {
     "FiraCode Nerd Font:size=10", "Noto Color Emoji:size=9"};
@@ -19,7 +31,7 @@ static char sel_fg[] = "#dadada";
 static char sel_bg[] = "#005577";
 static char sel_border[] = "#a8a8a8";
 
-static const char *colors[][3] = {
+static char *colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {norm_fg, norm_bg, norm_border},
     [SchemeSel] = {sel_fg, sel_bg, sel_border},
@@ -51,6 +63,24 @@ static const Layout layouts[] = {
     {"[]=", tile}, /* first entry is default */
     {"><>", NULL}, /* no layout function means floating behavior */
     {"[M]", monocle},
+};
+
+/*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+    {"font", STRING, &font},
+    /* { "dmenufont",          STRING,  &dmenufont }, */
+    {"rofifont", STRING, &rofifont}, {"user_bh", INTEGER, &user_bh},
+    {"norm_bg", STRING, &norm_bg}, {"norm_border", STRING, &norm_border},
+    {"norm_fg", STRING, &norm_fg}, {"sel_bg", STRING, &sel_bg},
+    {"sel_border", STRING, &sel_border}, {"sel_fg", STRING, &sel_fg},
+    {"borderpx", INTEGER, &borderpx},
+    // {"gappih", INTEGER, &gappih},
+    {"gappiv", INTEGER, &gappiv},
+    //{"gappoh", INTEGER, &gappoh},
+    // {"gappov", INTEGER, &gappov},
+    // {"statmonval", INTEGER, &statmonval},
 };
 
 /* key definitions */
