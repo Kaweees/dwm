@@ -19,8 +19,8 @@
 
 </div>
 
-<a href="https://github.com/Kaweees/nvim">
-  <img alt="Neovim Logo" src="assets/img/nvim.png" align="right" width="150">
+<a href="https://github.com/Kaweees/dwm">
+  <img alt="Neovim Logo" src="assets/img/dwm.png" align="right" width="150">
 </a>
 
 <div align="left">
@@ -51,7 +51,7 @@ My custom patches and configurations for dynamic window manager (dwm)
 
 ### Prerequisites
 
-Before attempting to build this project, make sure you have [Neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md), [packer.nvim](https://github.com/wbthomason/packer.nvim?tab=readme-ov-file#quickstart), and a [Nerd Font](https://www.nerdfonts.com) installed on your machine.
+Before attempting to build this project, make sure you have [X Window System](https://www.x.org/), [packer.dwm](https://github.com/wbthomason/packer.nvim?tab=readme-ov-file#quickstart), and a [Nerd Font](https://www.nerdfonts.com) installed on your machine.
 
 ### Installation
 
@@ -59,24 +59,24 @@ To get a local copy of the project up and running on your machine, follow these 
 
 1. Clone the project repository
    ```sh
-   git clone https://github.com/Kaweees/nvim.git
-   cd nvim
+   git clone https://github.com/Kaweees/dwm.git
+   cd dwm
    ```
-2. Create a symlink from the cloned folder to where neovim expects its configuration to be located. Personally, I use [ansible](https://github.com/Kaweees/ansible/) to create symlinks for all of my [dotfiles](https://github.com/Kaweees/dotfiles/). If you are not sure where it is, check `$XDG_CONFIG_HOME/nvim` or run one of these commands to find out:
+2. Create a symlink from the cloned folder to where neovim expects its configuration to be located. Personally, I use [ansible](https://github.com/Kaweees/ansible/) to create symlinks for all of my [dotfiles](https://github.com/Kaweees/dotfiles/). If you are not sure where it is, check `$XDG_CONFIG_HOME/dwm` or run one of these commands to find out:
    ```sh
-   :echo stdpath('config') # Execute while in nvim
-   :h rtp # Execute while in nvim
+   :echo stdpath('config') # Execute while in dwm
+   :h rtp # Execute while in dwm
    ```
 3. Install the project dependencies
    ```sh
-   nvim +PlugInstall # Execute from the command line
-   :PackerSync # Execute while in nvim
+   dwm +PlugInstall # Execute from the command line
+   :PackerSync # Execute while in dwm
    ```
 4. If you want to use the [WakaTime](https://wakatime.com) plugin, configure your API key.
    ```sh
-   :WakaTimeApiKey # Execute while in nvim
+   :WakaTimeApiKey # Execute while in dwm
    ```
-5. If you want to use the [GitHub Copilot](https://github.com/zbirenbaum/lua/) plugin, authenticate your account by executing the following command while in nvim.
+5. If you want to use the [GitHub Copilot](https://github.com/zbirenbaum/lua/) plugin, authenticate your account by executing the following command while in dwm.
    ```sh
    :Copilot auth
    ```
@@ -86,43 +86,37 @@ To get a local copy of the project up and running on your machine, follow these 
 
 ### Available Plugins
 
-* [packer.nvim](https://github.com/wbthomason/packer.nvim/) : This plugin is an easy-to-use plugin manager and installs all of the other plugins listed here.
-* [telescope.nvim](https://github.com/pnvim-telescope/telescope.nvim/) : This plugin provides extensible fuzzy finder over lists.
-* [harpoon](https://github.com/ThePrimeagen/harpoon2) : This plugin provides a quick way to switch between specific files in a project and execute project specific commands.
-* [vim-wakatime](https://github.com/wakatime/vim-wakatime/) : This plugin allows programming activity to automatically be tracked and displayed in your WakaTime dashboard.
-* [copilot.lua](https://github.com/zbirenbaum/copilot.lua/) : This plugin provides an efficent way to use GitHub Copilot AI to generate code snippets.
+* [statusbutton](https://dwm.suckless.org/patches/statusbutton/) : Adds a clickable button to the left hand side of the statusbar.
+* [Xresources](https://dwm.suckless.org/patches/xresources/) : Allows to handle settings from Xresources.
 
-_To see all of the available plugins, please refer to [packer.lua](./lua/config/packer.lua)_
+_To see all of the available plugins, please refer to [patches](./patches/)_
 
 ### Keyboard Shortcuts
-To enter custom commands into dwm, you must first enter a specific keybind, which is called the MODKEY, followed by the command keybind. My Mod1Mask is <kbd>Alt</kbd>.
+To enter custom commands into dwm, you must first enter a specific keybind, which is called the MODKEY, followed by the command keybind. My MODKEY is <kbd>Alt</kbd>.
 
 To complile and install dwm, enter the following command in the root of the project:
    ```sh
    sudo make clean install
    ```
 
-| Mode | Command Keybind | Command Description |
-| ---- | --------------- | ------------------- |
-| normal | <kbd>leader</kbd> + <kbd>c</kbd> | create new window and switch to it |
-| a | <kbd>leader</kbd> + <kbd>#</kbd> | switch to window # |
-| a | <kbd>leader</kbd> + <kbd>n</kbd> | switch to next window |
-| a | <kbd>leader</kbd> + <kbd>p</kbd> | switch to previous window |
-| a | <kbd>leader</kbd> + <kbd>:</kbd> | swap window with next window |
-| a | <kbd>leader</kbd> + <kbd>;</kbd> | swap window with previous window |
-| a | <kbd>leader</kbd> + <kbd>&</kbd> | kill window and all panes in it |
-
-<!-- Normal | `<leader>` + `p` + `v` | Execute `:PackerSync` | -->
-
+| Command Keybind | Command Description |
+| --------------- | ------------------- |
+| <kbd>leader</kbd> + <kbd>c</kbd> | create new window and switch to it |
+| <kbd>leader</kbd> + <kbd>#</kbd> | switch to window # |
+| <kbd>leader</kbd> + <kbd>n</kbd> | switch to next window |
+| <kbd>leader</kbd> + <kbd>p</kbd> | switch to previous window |
+| <kbd>leader</kbd> + <kbd>:</kbd> | swap window with next window |
+| <kbd>leader</kbd> + <kbd>;</kbd> | swap window with previous window |
+| <kbd>leader</kbd> + <kbd>&</kbd> | kill window and all panes in it |
 
 <!-- PROJECT FILE STRUCTURE -->
 ## Project Structure
 
 ```
-. nvim/
+. dwm/
 ├── after/plugins/                 - plugin-specific configurations
 ├── lua/config/
-│   ├── packer.lua                 - packages installed by packer.nvim
+│   ├── packer.lua                 - packages installed by packer.dwm
 │   ├── remap.lua                  - keybinds and leader configuration
 │   └── set.lua                    - miscellaneous settings
 ├── init.lua                       - Entry point, loads all plugins and configurations
@@ -136,12 +130,12 @@ The source code for my website is distributed under the terms of the GNU General
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/Kaweees/nvim.svg?style=for-the-badge
-[contributors-url]: https://github.com/Kaweees/nvim/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Kaweees/nvim.svg?style=for-the-badge
-[forks-url]: https://github.com/Kaweees/nvim/network/members
-[stars-shield]: https://img.shields.io/github/stars/Kaweees/nvim.svg?style=for-the-badge
-[stars-url]: https://github.com/Kaweees/nvim/stargazers
+[contributors-shield]: https://img.shields.io/github/contributors/Kaweees/dwm.svg?style=for-the-badge
+[contributors-url]: https://github.com/Kaweees/dwm/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Kaweees/dwm.svg?style=for-the-badge
+[forks-url]: https://github.com/Kaweees/dwm/network/members
+[stars-shield]: https://img.shields.io/github/stars/Kaweees/dwm.svg?style=for-the-badge
+[stars-url]: https://github.com/Kaweees/dwm/stargazers
 
 <!-- MARKDOWN SHIELD BAGDES & LINKS -->
 <!-- https://github.com/Ileriayo/markdown-badges -->
